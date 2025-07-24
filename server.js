@@ -15,10 +15,11 @@ app.use(express.static(path.join(__dirname)));
 
 // MySQL database connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'mate', // Change this to your MySQL username
-  password: 'Abc1234@', // Change this to your MySQL password
-  database: 'signup_db'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
 });
 
 // Connect to MySQL
