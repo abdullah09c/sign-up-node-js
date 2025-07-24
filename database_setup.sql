@@ -1,15 +1,15 @@
 -- Database setup for the signup form
--- Run these commands in your MySQL client
+-- Run these commands in your PostgreSQL client
 
 -- Create database
-CREATE DATABASE IF NOT EXISTS signup_db;
+CREATE DATABASE signup_db;
 
--- Use the database
-USE signup_db;
+-- Connect to the database
+\c signup_db;
 
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Optional: Create an index on email for faster lookups
-CREATE INDEX idx_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_email ON users(email);
 
 -- Optional: Create an index on username for faster lookups
-CREATE INDEX idx_username ON users(username);
+CREATE INDEX IF NOT EXISTS idx_username ON users(username);
 
 -- Show table structure
-DESCRIBE users;
+\d users;

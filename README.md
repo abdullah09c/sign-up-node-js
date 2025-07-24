@@ -1,6 +1,6 @@
-# Sign Up Form with Node.js and MySQL
+# Sign Up Form with Node.js and PostgreSQL
 
-A complete sign-up form with backend integration using Node.js, Express, and MySQL.
+A complete sign-up form with backend integration using Node.js, Express, and PostgreSQL.
 
 ## Features
 
@@ -10,7 +10,7 @@ A complete sign-up form with backend integration using Node.js, Express, and MyS
 - ✅ Terms and conditions checkbox
 - ✅ Password visibility toggle
 - ✅ Real-time form validation
-- ✅ MySQL database integration
+- ✅ PostgreSQL database integration
 - ✅ Modern UI with blur effects
 
 ## Setup Instructions
@@ -20,31 +20,36 @@ A complete sign-up form with backend integration using Node.js, Express, and MyS
 Make sure you have installed:
 
 - Node.js (v14 or higher)
-- MySQL Server
+- PostgreSQL Server
 - npm (comes with Node.js)
 
 ### 2. Database Setup
 
-1. Start your MySQL server
-2. Open MySQL client and run the commands in `database_setup.sql`:
+1. Start your PostgreSQL server
+2. Open PostgreSQL client (psql) and run the commands in `database_setup.sql`:
 
    ```sql
-   source database_setup.sql
+   \i database_setup.sql
    ```
 
    Or copy and paste the SQL commands manually.
 
 ### 3. Configure Database Connection
 
-In `server.js`, update the database connection settings:
+Create a `.env` file in the project root with your PostgreSQL connection settings:
 
-```javascript
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "your_mysql_username", // Change this
-  password: "your_mysql_password", // Change this
-  database: "signup_db",
-});
+```env
+DB_HOST=localhost
+DB_USER=your_postgresql_username
+DB_PASSWORD=your_postgresql_password
+DB_NAME=signup_db
+DB_PORT=5432
+```
+
+You can copy the `.env.example` file and modify it with your database credentials:
+
+```bash
+cp .env.example .env
 ```
 
 ### 4. Install Dependencies
